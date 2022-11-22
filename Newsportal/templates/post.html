@@ -1,0 +1,30 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+<h1> {{ post.title | censor:'булок' }} </h1>
+    <hr>
+{{ post.text | censor:'булок' }}
+    <hr>
+{{ post.time_write | date:'d-M-Y h:i' }}
+    <hr>
+{% for cat in post_category.all %}
+    <li> {{ cat.name_category }}
+        {% if user_auth %}
+            {% if not is_subscriber %}
+                <button> <a href="{% url 'subscribe' post.pk %}">Подписаться</a> </button>
+            {% else %}
+                <button> <a href="{% url 'unsubscribe' post.pk %}">Отписаться</a> </button>
+            {% endif %}
+        {% endif %}
+    </li>
+{% endfor %}
+<hr>
+    <a href="{% url 'post_edit' post.id %}"><u>Редактировать</u></a><br>
+    <a href="{% url 'post_delete' post.id %}"><u>Удалить публикацию</u></a>
+{% endblock content %}
