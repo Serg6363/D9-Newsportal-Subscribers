@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+<h1> {{ category.title }} </h1>
+    <hr>
+{{ category.information }}
+    <hr>
+    {% if user_auth %}
+        {% if not is_subscriber %}
+            <button> <a href="{% url 'subscribe' cat.pk %}">Подписаться</a> </button>
+        {% else %}
+            <button> <a href="{% url 'unsubscribe' cat.pk %}">Отписаться</a> </button>
+        {% endif %}
+    {% endif %}
+<hr>
+{% endblock content %}

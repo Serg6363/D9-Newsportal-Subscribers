@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+    <h1>Все категории</h1>
+    <hr>
+    <li> {{ cat.name_category }}
+        <a href="{% url 'categories' category.id %}">{{ category.name_category }}Подробнее</a>
+    </li>
+<hr>
+    <a href="{% url 'post_ad' %}">Добавить новую категорию</a> <br>
+{% endblock content %}

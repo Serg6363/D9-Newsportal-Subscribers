@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+
+<h1> {{ post.author }} </h1>
+<hr>
+{% for cat in post_category.all %}
+    <li> {{ cat.name_category }} </li>
+{% endfor %}
+<hr>
+{% endblock content %}

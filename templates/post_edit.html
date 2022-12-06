@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %} Product list {% endblock title %}
+
+{% block content %}
+<h1>Редактировать</h1>
+<hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Опубликовать">
+<hr>
+    <a href="{% url 'post_edit' post.id %}"><u> Удалить публикацию </u></a>
+</form>
+
+{% endblock content %}
